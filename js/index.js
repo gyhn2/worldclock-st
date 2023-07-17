@@ -1,5 +1,5 @@
-    /* API by IP address */
-    const url =  `https://ipapi.co/json/`
+    /* Astronomy API: sunset and sunrise by latitude and logitude  */
+    const apikey = "get key from https://ipgeolocation.io/"
     let geoData;
     /* data with all cities with population >30000 geodata json */
     //Source: https://public.opendatasoft.com/explore/dataset/geonames-all-cities-with-a-population-1000/table/?disjunctive.cou_name_en&sort=name
@@ -76,8 +76,9 @@
 
 
     /* Fetch client location API */
+    /* API by IP address */
     async function getGeoApi() {
-        const res = fetch(url)
+        const res = fetch(`https://ipapi.co/json/`)
         .then(response => response.json())
         .then(data => {
             geoData =data;
@@ -344,8 +345,6 @@
         }
     }
 
-    /* Astronomy API: sunset and sunrise by latitude and logitude  */
-    const apikey = "get key from https://ipgeolocation.io/"
     /* get sunset and sunrise time */
     async function daylight(lat, long, tz) {
         return fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${apikey}&lat=${lat}&&long=${long}`)
